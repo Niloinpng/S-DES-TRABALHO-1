@@ -9,7 +9,6 @@ def permutacao_final(bloco_8bits):
     tabela_ip_inversa = [4, 1, 3, 5, 7, 2, 8, 6]  
     return permutacao(bloco_8bits, tabela_ip_inversa)
 
-
 def dividir_em_metades(bloco_8bits):
     metade_esquerda = bloco_8bits[:4]
     metade_direita = bloco_8bits[4:]
