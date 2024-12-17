@@ -6,7 +6,7 @@ def permutacao_inicial(bloco_8bits):
     return permutacao(bloco_8bits, tabela_ip)
 
 def permutacao_final(bloco_8bits):
-    tabela_ip_inversa = [4, 1, 3, 5, 7, 2, 8, 6]  # Tabela de permutação final
+    tabela_ip_inversa = [4, 1, 3, 5, 7, 2, 8, 6]  
     return permutacao(bloco_8bits, tabela_ip_inversa)
 
 
@@ -40,31 +40,32 @@ def rodada_feistel(l, r, subchave):
     nova_metade_esquerda = ''.join(str(int(l[i]) ^ int(resultado_f[i])) for i in range(4))
     return r, nova_metade_esquerda 
 
-# 1. Gerar Sub Chaves
-chave_principal = "1010000010" 
-k1, k2 = gerar_subchaves(chave_principal)
-print(f"Subchave K1: {k1}")
-print(f"Subchave K2: {k2}")
+def encrypt (chave_principal, bloco_dados):
+    # 1. Gerar Sub Chaves 
+    k1, k2 = gerar_subchaves(chave_principal)
+    print(f"Subchave K1: {k1}")
+    print(f"Subchave K2: {k2}")
 
-# 2. Permutação Inicial
-bloco_dados = "11010111"  
-bloco_permutado = permutacao_inicial(bloco_dados)
-print(f"Bloco após Permutação Inicial: {bloco_permutado}")
+    # 2. Permutação Inicial  
+    bloco_permutado = permutacao_inicial(bloco_dados)
+    print(f"Bloco após Permutação Inicial: {bloco_permutado}")
 
-# 3. Dividir em Metades 
-l, r = dividir_em_metades(bloco_permutado)
-print(f"Metade Esquerda (L): {l}")
-print(f"Metade Direita (R): {r}")
+    # 3. Dividir em Metades 
+    l, r = dividir_em_metades(bloco_permutado)
+    print(f"Metade Esquerda (L): {l}")
+    print(f"Metade Direita (R): {r}")
 
-# 4. Rodadas de Feistel 
-# 4.1. Primeira rodada com K1
-l, r = rodada_feistel(l, r, k1)
-print(f"Após primeira rodada - L: {l}, R: {r}")
+    # 4. Rodadas de Feistel 
+    # 4.1. Primeira rodada com K1
+    l, r = rodada_feistel(l, r, k1)
+    print(f"Após primeira rodada - L: {l}, R: {r}")
 
-# 4.2. Segunda rodada com K2 (sem troca de metades no final)
-l, r = rodada_feistel(l, r, k2)
-print(f"Após segunda rodada - L: {l}, R: {r}")
+    # 4.2. Segunda rodada com K2 (sem troca de metades no final)
+    l, r = rodada_feistel(l, r, k2)
+    print(f"Após segunda rodada - L: {l}, R: {r}")
 
-# 5. Permutação Final (IP-^1)
-bloco_final = permutacao_final(r + l)  # R + L pois não trocamos no final
-print(f"Bloco após Permutação Final (IP-^1): {bloco_final}")
+    # 5. Permutação Final (IP-^1)
+    bloco_final = permutacao_final(r + l)  # R + L pois não trocamos no final
+    print(f"Bloco após Permutação Final (IP-^1): {bloco_final}")
+    
+    return bloco_final
