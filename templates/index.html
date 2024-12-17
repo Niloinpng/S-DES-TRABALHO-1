@@ -15,17 +15,25 @@
             });
             const dados = await resposta.json();
             document.getElementById("resultado").innerHTML =
-                `Bloco Fianl: ${dados.bloco_final}`;
+                `Bloco Final: ${dados.bloco_final}`;
         }
     </script>
+
 </head>
-<body>
-    <h1>S-DES Criptografia</h1>
-    <label>Chave de 10 bits:</label>
-    <input type="text" id="chave_principal" placeholder="Ex: 1010000010"><br>
-    <label>Bloco de 8 bits:</label>
-    <input type="text" id="bloco_dados" placeholder="Ex: 11010111"><br>
-    <button onclick="enviarDados()">Processar</button>
-    <div id="resultado"></div>
+<body style="background-color: #D9D9D9; font-family: Poppins;">
+    <div style="background-color: white; margin: 200px; height: 80%; width: 80%; padding: 10px;">
+        <h1>S-DES Criptografia</h1>
+        <div>
+            <h2>Chave de 10 bits:</h2>
+            <input type="text" id="chave_principal" placeholder="Ex: 1010000010"><br>         
+        </div>
+        <div>
+            <h2>Bloco de 8 bits:</h2>
+            <input type="text" id="bloco_dados" placeholder="Ex: 11010111"><br>    
+        </div>
+        <button onclick="enviarDados()">Processar</button>
+        <line></line>
+        <div id="resultado"></div>
+    </div>
 </body>
 </html>
