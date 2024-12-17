@@ -5,7 +5,7 @@ def deslocamento_circular(bits, deslocamento):
     return bits[deslocamento:] + bits[:deslocamento]
 
 def gerar_subchaves(chave_10bits):
-
+    
     tabela_p10 = [3, 5, 2, 7, 4, 10, 1, 9, 8, 6]
     chave_permutada = permutacao(chave_10bits, tabela_p10)
 
