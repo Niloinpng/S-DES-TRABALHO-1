@@ -68,3 +68,26 @@ def encrypt (chave_principal, bloco_dados):
     print(f"Bloco após Permutação Final (IP-^1): {bloco_final}")
     
     return bloco_final
+
+def decrypt(chave_principal, bloco_cifrado):
+
+    k1, k2 = gerar_subchaves(chave_principal)
+
+    bloco_permutado = permutacao_inicial(bloco_cifrado)
+
+    l, r = bloco_permutado[:4], bloco_permutado[4:]
+
+    l, r = rodada_feistel(l, r, k2)
+
+    l, r = rodada_feistel(l, r, k1)
+
+    bloco_original = permutacao_final(r + l) 
+
+    return bloco_original
+
+#e = encrypt("1010000010","11010111")
+#print(e)
+#d = decrypt("1010000010",e)
+#print(d)
+#if d == "11010111":
+#    print("deu bom")
