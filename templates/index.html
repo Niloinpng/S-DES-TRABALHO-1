@@ -2,38 +2,59 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>S-DES Criptografia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-DES Criptografia/Descriptografia</title>
+    <link rel="stylesheet" href="/static/style.css">
     <script>
-        async function enviarDados() {
-            const chave_principal = document.getElementById("chave_principal").value;
-            const bloco_dados = document.getElementById("bloco_dados").value;
+        function validarEntradas() {
+            const chave = document.getElementById("chave").value;
+            const bloco = document.getElementById("bloco").value;
+            const operacao = document.querySelector('input[name="operacao"]:checked').value;
 
+            if (!/^[01]{10}$/.test(chave)) {
+                alert("A chave deve conter exatamente 10 bits (apenas 0 e 1).");
+                return;
+            }
+
+            if (!/^[01]{8}$/.test(bloco)) {
+                alert("O bloco deve conter exatamente 8 bits (apenas 0 e 1).");
+                return;
+            }
+
+            enviarDados(chave, bloco, operacao);
+        }
+
+        async function enviarDados(chave, bloco, operacao) {
             const resposta = await fetch("/processar", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ chave_principal, bloco_dados })
+                body: JSON.stringify({ chave_principal: chave, bloco_dados: bloco, operacao })
             });
+
             const dados = await resposta.json();
-            document.getElementById("resultado").innerHTML =
-                `Bloco Final: ${dados.bloco_final}`;
+            document.getElementById("resultado").innerHTML = `Resultado: ${dados.bloco_final}`;
         }
     </script>
-
 </head>
-<body style="background-color: #D9D9D9; font-family: Poppins;">
-    <div style="background-color: white; margin: 200px; height: 80%; width: 80%; padding: 10px; border-radius: 5px;">
-        <h1>S-DES Criptografia</h1>
-        <div>
-            <h2>Chave de 10 bits:</h2>
-            <input type="text" id="chave_principal" placeholder="Ex: 1010000010"><br>         
-        </div>
-        <div>
-            <h2>Bloco de 8 bits:</h2>
-            <input type="text" id="bloco_dados" placeholder="Ex: 11010111"><br>    
-        </div>
-        <button onclick="enviarDados()">Processar</button>
-        <line></line>
-        <div id="resultado"></div>
-    </div>
+<body>
+    <h1>S-DES Criptografia e Descriptografia</h1>
+
+    <form onsubmit="event.preventDefault(); validarEntradas();">
+        <label>Chave de 10 bits:</label>
+        <input type="text" id="chave" placeholder="Ex: 1010000010" required><br>
+
+        <label>Bloco de 8 bits:</label>
+        <input type="text" id="bloco" placeholder="Ex: 11010111" required><br>
+
+        <label>Operação:</label><br>
+        <input type="radio" id="crip" name="operacao" value="crip" checked>
+        <label for="crip">Criptografar</label><br>
+        <input type="radio" id="decrip" name="operacao" value="decrip">
+        <label for="decrip">Descriptografar</label><br><br>
+
+        <button type="submit">Processar</button>
+    </form>
+
+    <div id="resultado"></div>
 </body>
 </html>

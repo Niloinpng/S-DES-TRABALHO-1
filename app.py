@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from encrypt import encrypt
+from encrypt import encrypt, decrypt
 
 app = Flask(__name__)
 
@@ -12,9 +12,12 @@ def processar():
     dados = request.json
     chave_principal = dados.get("chave_principal")
     bloco_dados = dados.get("bloco_dados")
-
+    operacao = dados.get("operacao")
+    if operacao == "decrip":
+        bloco_final = decrypt(chave_principal, bloco_dados)
+    else:
+        bloco_final = encrypt(chave_principal, bloco_dados)
     # Processa os dados utilizando suas funções
-    bloco_final = encrypt(chave_principal, bloco_dados)
     resposta = {
         "bloco_final": bloco_final
     }
