@@ -42,30 +42,30 @@ def rodada_feistel(l, r, subchave):
 def encrypt (chave_principal, bloco_dados):
     # 1. Gerar Sub Chaves 
     k1, k2 = gerar_subchaves(chave_principal)
-    print(f"Subchave K1: {k1}")
-    print(f"Subchave K2: {k2}")
+    #print(f"Subchave K1: {k1}")
+    #print(f"Subchave K2: {k2}")
 
     # 2. Permutação Inicial  
     bloco_permutado = permutacao_inicial(bloco_dados)
-    print(f"Bloco após Permutação Inicial: {bloco_permutado}")
+    #print(f"Bloco após Permutação Inicial: {bloco_permutado}")
 
     # 3. Dividir em Metades 
     l, r = dividir_em_metades(bloco_permutado)
-    print(f"Metade Esquerda (L): {l}")
-    print(f"Metade Direita (R): {r}")
+    #print(f"Metade Esquerda (L): {l}")
+    #print(f"Metade Direita (R): {r}")
 
     # 4. Rodadas de Feistel 
     # 4.1. Primeira rodada com K1
     l, r = rodada_feistel(l, r, k1)
-    print(f"Após primeira rodada - L: {l}, R: {r}")
+    #print(f"Após primeira rodada - L: {l}, R: {r}")
 
     # 4.2. Segunda rodada com K2 (sem troca de metades no final)
     l, r = rodada_feistel(l, r, k2)
-    print(f"Após segunda rodada - L: {l}, R: {r}")
+    #print(f"Após segunda rodada - L: {l}, R: {r}")
 
     # 5. Permutação Final (IP-^1)
     bloco_final = permutacao_final(r + l)  # R + L pois não trocamos no final
-    print(f"Bloco após Permutação Final (IP-^1): {bloco_final}")
+    #print(f"Bloco após Permutação Final (IP-^1): {bloco_final}")
     
     return bloco_final
 
