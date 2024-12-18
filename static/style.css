@@ -22,10 +22,31 @@ h2 {
     margin-top: 0; /* Remove espaço extra acima do <h2> */
 }
 
+h3{
+    color: #10403C;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+button{
+    background-color: #1D70B8;
+    color: #FFFFFF;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 10px;
+    width: 100%;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    font-style: normal;
+    border: 0px; 
+}
+
 label{
     font-family: "Poppins", serif;
     font-weight: 300;
     font-style: normal;
+    
 }
 
 .bloco {
@@ -44,3 +65,12 @@ label{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
 }
 
+.resultado{
+    background-color: #BFE3E0;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex; /* Flexbox para centralizar elementos internos */
+    flex-direction: column; /* Alinhamento vertical */
+    justify-content: center; /* Centraliza verticalmente os elementos internos */
+    align-items: center; /* Centraliza horizontalmente os elementos internos */
+}

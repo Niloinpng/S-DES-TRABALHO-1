@@ -32,7 +32,11 @@
             });
 
             const dados = await resposta.json();
-            document.getElementById("resultado").innerHTML = `Resultado: ${dados.bloco_final}`;
+
+            const resultadoContainer = document.getElementById("resultado-container");
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = `<h3>Resultado: ${dados.bloco_final}</h3>`;
+            resultadoContainer.style.display = "block"; 
         }
     </script>
 </head>
@@ -59,7 +63,14 @@
             <button type="submit">Processar</button>
         </form>
     
-        <div id="resultado"></div>
+        <br>
+
+        <div id="resultado-container" style="display: none;"> <!-- Div oculta inicialmente -->
+            <div id="resultado" class="resultado"></div>
+        </div>
+
+        <br>
+
     </div>
 </body>
 </html>
