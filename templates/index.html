@@ -37,24 +37,29 @@
     </script>
 </head>
 <body>
-    <h1>S-DES Criptografia e Descriptografia</h1>
+    <div class="bloco">
+        <h1>S-DES Criptografia</h1>
+        <h2>Calcuradora</h2>
 
-    <form onsubmit="event.preventDefault(); validarEntradas();">
-        <label>Chave de 10 bits:</label>
-        <input type="text" id="chave" placeholder="Ex: 1010000010" required><br>
+        <form class="form" onsubmit="event.preventDefault(); validarEntradas();">
+            <label>Chave de 10 bits</label><br>
+            <input type="text" id="chave" placeholder="Ex: 1010000010" required><br>
+            <br>
 
-        <label>Bloco de 8 bits:</label>
-        <input type="text" id="bloco" placeholder="Ex: 11010111" required><br>
-
-        <label>Operação:</label><br>
-        <input type="radio" id="crip" name="operacao" value="crip" checked>
-        <label for="crip">Criptografar</label><br>
-        <input type="radio" id="decrip" name="operacao" value="decrip">
-        <label for="decrip">Descriptografar</label><br><br>
-
-        <button type="submit">Processar</button>
-    </form>
-
-    <div id="resultado"></div>
+            <label>Bloco de 8 bits</label><br>
+            <input type="text" id="bloco" placeholder="Ex: 11010111" required><br>
+            <br>
+            
+            <label>Operação</label><br>
+            <input type="radio" id="crip" name="operacao" value="crip" checked>
+            <label for="crip">Criptografar</label><br>
+            <input type="radio" id="decrip" name="operacao" value="decrip">
+            <label for="decrip">Descriptografar</label><br><br>
+    
+            <button type="submit">Processar</button>
+        </form>
+    
+        <div id="resultado"></div>
+    </div>
 </body>
 </html>

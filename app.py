@@ -13,11 +13,12 @@ def processar():
     chave_principal = dados.get("chave_principal")
     bloco_dados = dados.get("bloco_dados")
     operacao = dados.get("operacao")
+    
     if operacao == "decrip":
         bloco_final = decrypt(chave_principal, bloco_dados)
     else:
         bloco_final = encrypt(chave_principal, bloco_dados)
-    # Processa os dados utilizando suas funções
+    
     resposta = {
         "bloco_final": bloco_final
     }

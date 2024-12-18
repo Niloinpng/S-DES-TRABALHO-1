@@ -1,5 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body{
     margin: 0px;
     padding: 0px;
     background-color: #D9D9D9;
+    font-family: "Poppins", serif;
 }
+
+h1 {
+    color: #1D70B8;
+    font-family: "Poppins", serif;
+    font-weight: 800;
+    font-style: normal;
+    margin-bottom: 10px; /* Reduz o espaço abaixo do <h1> */
+}
+
+h2 {
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-style: normal;
+    margin-top: 0; /* Remove espaço extra acima do <h2> */
+}
+
+label{
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.bloco {
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 5px; /* Cantos arredondados */
+    border: 2px solid rgba(0, 0, 0, 0.2); /* Borda preta com 20% de opacidade */
+    display: flex; /* Flexbox para centralizar elementos internos */
+    flex-direction: column; /* Alinhamento vertical */
+    justify-content: center; /* Centraliza verticalmente os elementos internos */
+    align-items: center; /* Centraliza horizontalmente os elementos internos */
+    position: absolute; /* Necessário para centralizar o bloco na tela */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste para centralização perfeita */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
+}
+
