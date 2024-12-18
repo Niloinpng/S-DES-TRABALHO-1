@@ -16,7 +16,7 @@ def instalar_flask():
 def testar_codigo():
     chave_principal = "1010000010"
     dados = "11010111"
-    print("Teste da Logica de Criptografia!")
+    print("Teste da Logica de Criptografia...")
     print(f"Chave Principal: {chave_principal}")
     print(f"Bloco de Dados: {chave_principal}")
     dados_cripogradado = encrypt(chave_principal,dados)
